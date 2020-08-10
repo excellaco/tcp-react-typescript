@@ -4,6 +4,9 @@ import {
   IEmployeeForm,
   defaultValues,
   employeeFormSchema,
+  bioEmployeeSchema,
+  contactEmployeeSchema,
+  skillsEmployeeSchema,
 } from "./EmployeeForm.schema";
 import React, { useState } from "react";
 
@@ -11,6 +14,7 @@ import { BioForm } from "./BioForm/BioForm";
 import StepContent from "@material-ui/core/StepContent";
 import { makeStyles } from "@material-ui/core/styles";
 import ContactForm from "./ContactForm/ContactForm";
+import SkillsForm from "./SkillsForm/SkillsForm";
 
 const steps = ["Biological Information", "Contact Info", "Skills", "Review"];
 const useStyles = makeStyles((theme) => ({
@@ -58,9 +62,24 @@ const EmployeeForm: React.FC<{ employeeFormData: IEmployeeForm }> = ({
       case 1:
         return <ContactForm formGroup="contact" />;
       case 2:
-        return "Skills Info"; //placeholder
+        return <SkillsForm formGroup="skills" />; //placeholder
       case 3:
-        return "Review"; //placeholder
+        return "Review Here"; //placeholder
+      default:
+        return <div>Not Found</div>;
+    }
+  }
+
+  function getValidation(step: number) {
+    switch (step) {
+      case 0:
+        return bioEmployeeSchema;
+      case 1:
+        return contactEmployeeSchema;
+      case 2:
+        return skillsEmployeeSchema; //placeholder
+      case 3:
+        return employeeFormSchema; //placeholder
       default:
         return <div>Not Found</div>;
     }
@@ -84,11 +103,11 @@ const EmployeeForm: React.FC<{ employeeFormData: IEmployeeForm }> = ({
             <StepContent>
               <Formik
                 initialValues={snapshot}
-                validationSchema={employeeFormSchema}
+                validationSchema={getValidation(activeStep)}
                 onSubmit={handleNext}
               >
                 {(formik) => (
-                  <Form data-testid="form">
+                  <Form data-testid={activeStep + `-form`}>
                     {getNextStep(activeStep)}
                     <div>
                       {activeStep !== 0 && (

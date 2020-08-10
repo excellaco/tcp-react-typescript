@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useAuthState } from "../AuthContext/AuthContext";
+import AuthService from "../../services/Auth/AuthService";
+import EmployeeService from "../../services/Employee/EmployeeService";
+import { IEmployee } from "../../models/Employee.interface";
 
 export type LoginInfo = { username: string; password: string };
-type UserAction = { type: "login" | "logout"; payload?: LoginInfo };
+type UserAction = { type: "populate" | "clear"; payload?: IEmployee };
 type UserDispatch = (action: UserAction) => void;
-type UserState = { loggedIn: boolean; error: string };
+type UserState = {
+  isAdmin: boolean;
+  employeeInfo: IEmployee | undefined;
+};
 type UserProviderProps = { children: React.ReactNode };
 
 const UserStateContext = React.createContext<UserState | undefined>(undefined);
@@ -11,30 +18,48 @@ const UserDispatchContext = React.createContext<UserDispatch | undefined>(
   undefined
 );
 
+const defaultState: UserState = {
+  isAdmin: false,
+  employeeInfo: undefined,
+};
+
+const API = new AuthService();
+
 function userReducer(state: UserState, action: UserAction) {
   switch (action.type) {
-    case "login": {
-      if (
-        action.payload?.username === "user" &&
-        action.payload?.password === "pass"
-      )
-        return {
-          loggedIn: true,
-          error: "",
-        };
-      return { loggedIn: false, error: "Failed to login" };
+    case "populate": {
+      return {
+        ...state,
+        employeeInfo: action.payload,
+        isAdmin: API.isAdmin(),
+      };
     }
-    case "logout": {
-      return { ...state, loggedIn: false };
+    case "clear": {
+      return defaultState;
     }
   }
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
+  const { status, token } = useAuthState();
+
   const [state, dispatch]: [
     UserState,
     UserDispatch
-  ] = React.useReducer(userReducer, { loggedIn: false, error: "" });
+  ] = React.useReducer(userReducer, { ...defaultState });
+
+  const populateUser = useCallback(async () => {
+    const employeeService = new EmployeeService(token);
+    const employee: IEmployee = await employeeService
+      .getByEmail(API.getEmail())
+      .then((res) => res);
+    dispatch({ type: "populate", payload: employee });
+  }, [token]);
+
+  React.useEffect(() => {
+    if (status === "authenticated" && token !== "") populateUser();
+    if (status === "unauthenticated") dispatch({ type: "clear" });
+  }, [status, populateUser, token]);
 
   return (
     <UserStateContext.Provider value={state}>
