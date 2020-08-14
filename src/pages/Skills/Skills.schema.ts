@@ -16,28 +16,21 @@ export const manageSkillsModel = {
   },
   isPrimarySkill: {
     name: "primarySkill",
-    label: "Primary Skill*",
-    // requiredErrorMsg: "Primary skill is required",
-    default: "",
+    label: "Primary Skill",
+    default: false,
   },
 };
 
-const {
-    skill,
-    proficiency,
-    isPrimarySkill,
-} = manageSkillsModel;
+const { skill, proficiency, isPrimarySkill } = manageSkillsModel;
 
 export const manageSkillsSchema = Yup.object({
   skill: Yup.string()
     .required(`${skill.requiredErrorMsg}`)
     .default(skill.default),
-    proficiency: Yup.string().default(proficiency.default),
-  lastName: Yup.string()
-    .default(isPrimarySkill.default),
-    isPrimarySkill: Yup.boolean().default(isPrimarySkill.default),
+  proficiency: Yup.string().default(proficiency.default),
+  isPrimarySkill: Yup.boolean().default(isPrimarySkill.default),
 }).required();
 
-export type IEmployeeBioForm = Yup.InferType<typeof manageSkillsSchema>;
+export type ISkillsForm = Yup.InferType<typeof manageSkillsSchema>;
 
-export const bioFormInitialValues: IEmployeeBioForm = manageSkillsSchema.cast();
+export const skillsInitialValues: ISkillsForm = manageSkillsSchema.cast();

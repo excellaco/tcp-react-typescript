@@ -39,10 +39,10 @@ const skillFormSchema = Yup.object({
 
 export const skillsFormSchema = Yup.array().of(skillFormSchema).required()
 
-export type IEmployeeSkillForm = Yup.InferType<typeof skillsFormSchema>;
+export type ISkillForm = Yup.InferType<typeof skillsFormSchema>;
 
 export const skillFormInitialValues =  skillFormSchema.cast();
 
-export const skillsFormInitialValues: IEmployeeSkillForm = [
+export const skillsFormInitialValues: ISkillForm = [
   skillFormInitialValues
 ];
