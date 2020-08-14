@@ -1,25 +1,26 @@
 import React from "react";
 import { Box, Card, Grid, Button } from "@material-ui/core";
-
-import { addFormGroup } from "../../helpers/FormGroup";
-import { Formik, Field, Form, FormikHelpers } from "formik";
+import { Formik, Form } from "formik";
 import {
   manageSkillsModel,
   skillsInitialValues,
   manageSkillsSchema,
 } from "../../pages/Skills/Skills.schema";
 import InputField from "../../pages/EmployeeForm/Components/InputField";
-import RadioButtonField from "../../pages/EmployeeForm/Components/RadioButtonField";
 import CheckboxField from "../../pages/EmployeeForm/Components/CheckboxField";
 
 const SkillRow: React.FC<{}> = () => {
   const { skill, proficiency, isPrimarySkill } = manageSkillsModel;
 
+  function handleSubmit() {
+    // TODO
+  }
+
   return (
     <Formik
       initialValues={skillsInitialValues}
       validationSchema={manageSkillsSchema}
-      onSubmit={() => {}}
+      onSubmit={handleSubmit}
     >
       {(formik) => (
         <Form>
@@ -39,7 +40,7 @@ const SkillRow: React.FC<{}> = () => {
                     data={""}
                   />
                 </Grid>
-                <Button>Save</Button>
+                <Button type="submit">Save</Button>
               </Grid>
             </Box>
           </Card>
