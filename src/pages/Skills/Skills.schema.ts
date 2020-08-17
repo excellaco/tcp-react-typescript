@@ -1,16 +1,15 @@
 import * as Yup from "yup";
-import moment from "moment";
 
 export const manageSkillsModel = {
   skill: {
-    skill: "angular",
-    label: "Angular*",
+    name: "skill",
+    label: "Skill*",
     requiredErrorMsg: "Skill is required",
     default: "",
   },
   proficiency: {
     name: "proficiency",
-    label: "Skill Proficiency*",
+    label: "Proficiency*",
     requiredErrorMsg: "Proficiency is required",
     default: "",
   },
@@ -27,7 +26,9 @@ export const manageSkillsSchema = Yup.object({
   skill: Yup.string()
     .required(`${skill.requiredErrorMsg}`)
     .default(skill.default),
-  proficiency: Yup.string().default(proficiency.default),
+  proficiency: Yup.string()
+    .required(`${proficiency.requiredErrorMsg}`)
+    .default(proficiency.default),
   isPrimarySkill: Yup.boolean().default(isPrimarySkill.default),
 }).required();
 

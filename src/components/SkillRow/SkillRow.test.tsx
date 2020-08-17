@@ -13,10 +13,10 @@ import SkillRow from "./SkillRow";
     });
     
     it("renders SkillRow form elements", () => {
-        expect(screen.getByText(/Angular*/)).toBeInTheDocument();
-        expect(screen.getByText(/Skill Proficiency*/)).toBeInTheDocument();
-        expect(screen.getByText(/Primary Skill/)).toBeInTheDocument();
-        expect(screen.getByText(/Save/)).toBeInTheDocument();
+        expect(screen.getByText("Skill*")).toBeInTheDocument();
+        expect(screen.getByText("Proficiency*")).toBeInTheDocument();
+        expect(screen.getByText("Primary Skill")).toBeInTheDocument();
+        expect(screen.getByText("Save")).toBeInTheDocument();
     });
 
     // TODO: Add/Update this test when we have a working BE piece.

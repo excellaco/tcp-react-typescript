@@ -32,19 +32,19 @@ const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
       onSubmit={handleSubmit}
     >
       {(formik) => (
-        <Form name="Skill Row">
+        <Form>
           <Card>
             <Box p={3}>
               <Grid container spacing={3} alignItems={"center"}>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
-                  <InputField name={"skill"} label={skill.label} fullWidth />
+                  <InputField name={skill.name} label={skill.label} fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
-                  <InputField name={"proficiency"} label={proficiency.label} />
+                  <InputField name={proficiency.name} label={proficiency.label} />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
                   <CheckboxField
-                    name={"primary skill"}
+                    name={isPrimarySkill.name}
                     label={isPrimarySkill.label}
                     data={""}
                   />
