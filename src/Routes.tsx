@@ -16,14 +16,14 @@ export const Routes = () => (
     <Route exact path="/login" component={LoginComponent} />
     <Route exact path="/employee/add" component={EmployeeForm} />
     <Route exact path="/employee/list" component={EmployeesPage} />
-    <Route
-      exact
-      path="/employee/self"
-      render={({ match }) => <div>Manage Current User Skills</div>}
-    />
+    <Route exact path="/employee/self" component={SkillsPage} />
     <Route exact path="/employee/:id" component={EmployeeForm} />
     <Route exact path="/admin/categories" component={CategoriesPage} />
-    <Route exact path="/admin/skills" component={SkillsPage} />
+    <Route 
+      exact 
+      path="/admin/skills" 
+      render={({ match }) => <div>Manage Skills page</div>} 
+    />
     <Route component={NotFound} />
   </Switch>
 );

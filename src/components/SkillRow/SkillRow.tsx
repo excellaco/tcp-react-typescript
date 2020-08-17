@@ -8,7 +8,8 @@ import {
 } from "../../pages/Skills/Skills.schema";
 import InputField from "../../pages/EmployeeForm/Components/InputField";
 import CheckboxField from "../../pages/EmployeeForm/Components/CheckboxField";
-import { IEmployeeSkill } from "../../models/Skill.interface";
+import { IEmployeeSkill, PROFICIENCY } from "../../models/Skill.interface";
+import SelectField from "../../pages/EmployeeForm/Components/SelectField";
 
 const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
 
@@ -40,7 +41,13 @@ const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
                   <InputField name={skill.name} label={skill.label} fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
-                  <InputField name={proficiency.name} label={proficiency.label} />
+                  {/* <InputField name={proficiency.name} label={proficiency.label} /> */}
+                  <SelectField
+                    name={proficiency.name}
+                    label={proficiency.label}
+                    data={PROFICIENCY}
+                    fullWidth
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
                   <CheckboxField
