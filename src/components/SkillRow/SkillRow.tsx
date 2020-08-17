@@ -40,7 +40,13 @@ const SkillRow: React.FC<{}> = () => {
                     data={""}
                   />
                 </Grid>
-                <Button type="submit">Save</Button>
+                <Button 
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleSubmit()}
+                >
+                  Save
+                </Button>
               </Grid>
             </Box>
           </Card>

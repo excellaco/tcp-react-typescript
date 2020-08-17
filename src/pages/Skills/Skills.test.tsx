@@ -1,19 +1,14 @@
 import {
   render,
   screen,
-  act,
-  fireEvent,
 } from "@testing-library/react";
 import React from "react";
-import SkillsPage from "./Skills";
-import { Form } from "formik";
-
-// import { skillFormModel } from "./Skills.schema";
+import Skills from "./Skills";
 
 describe("Skills page", () => {
-  // beforeEach(() => {
-  //   render(<SkillsPage />);
-  // });
+  beforeEach(() => {
+    render(<Skills />);
+  });
 
   it("renders the skills page", () => {
     expect(screen.getByText(/Skills/)).toBeInTheDocument();
