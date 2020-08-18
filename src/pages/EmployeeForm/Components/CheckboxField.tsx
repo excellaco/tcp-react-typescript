@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 
 function CheckboxField(props: any) {
-  const { label, data, ...rest } = props;
+  const { label, checked, data, ...rest } = props;
   const [field, meta, helper] = useField(props);
   const [touched, error] = at(meta, "touched", "error");
   const isError = touched && error && true;
@@ -22,7 +22,8 @@ function CheckboxField(props: any) {
             <Checkbox
               color="primary"
               name={props.name}
-              defaultChecked={field.value}
+              // defaultChecked={field.value}
+              checked={checked}
               onChange={(isChecked) =>
                 helper.setValue(isChecked.target.checked)
               }

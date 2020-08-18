@@ -8,8 +8,8 @@ import { IEmployeeSkill, PROFICIENCY } from "../../models/Skill.interface";
 import { reactSkill, javaSkill } from "../../__mocks__/data/skill";
 
 const testSkills: IEmployeeSkill[] = [
-  {id: 1, skill: reactSkill, proficiency: PROFICIENCY.HIGH, primary: true},
-  {id: 1, skill: javaSkill, proficiency: PROFICIENCY.MID, primary: false}
+  {id: 1, skill: reactSkill, proficiency: PROFICIENCY.HIGH, isPrimarySkill: true},
+  {id: 1, skill: javaSkill, proficiency: PROFICIENCY.MID, isPrimarySkill: false}
 ]
 
 describe("Skills page", () => {

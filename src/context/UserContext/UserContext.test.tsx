@@ -40,7 +40,7 @@ const UserContextExample: React.FC<{}> = () => {
         id: 2,
         skill: { id: 2, name: "", category: { name: "", id: 1 } },
         proficiency: PROFICIENCY.LOW,
-        primary: true,
+        isPrimarySkill: true,
       },
     ],
     id: 1,

@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { Box, Card, Grid, Button } from "@material-ui/core";
 import { Formik, Form } from "formik";
 import {
-  skillsInitialValues,
   manageSkillsSchema,
   manageSkillsModel,
 } from "../../pages/Skills/Skills.schema";
-import InputField from "../../pages/EmployeeForm/Components/InputField";
 import CheckboxField from "../../pages/EmployeeForm/Components/CheckboxField";
-import { IEmployeeSkill, PROFICIENCY } from "../../models/Skill.interface";
+import { IEmployeeSkill, PROFICIENCY, ISkill } from "../../models/Skill.interface";
 import SelectField from "../../pages/EmployeeForm/Components/SelectField";
+import skills, { SKILLS } from "../../__mocks__/data/skill";
+import { useUserState } from "../../context/UserContext/UserContext";
 
 const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
 
-  const [snapshot, setSnapshot] = useState(skillData || skillsInitialValues);
+  const { employeeInfo } = useUserState();
+  const [snapshot, setSnapshot] = useState(skillData);
 
   const {
     skill,
@@ -21,16 +22,32 @@ const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
     isPrimarySkill,
   } = manageSkillsModel;
 
-  function handleSubmit() {
+  function saveSkill() {
     // TODO: update when BE piece in place.
+    // const existingSkill: ISkill = skills.filter(skill => { return skill.name === values.skill.name})
+    // const skill = {
+    //   // id: existingSkill.id,
+    //   skill: existingSkill,
+    //   proficiency: values.proficiency,
+    //   isPrimarySkill: values.isPrimarySkill,
+    // } as IEmployeeSkill
+    // addSkill(employeeInfo, skill);
     console.log("skill submitted")
+  }
+
+  function transformSnapshot(skill?: IEmployeeSkill) {
+    return {
+      skill: skill?.skill?.name.toUpperCase().replace(' ', '_'),
+      proficiency: skill?.proficiency,
+      isPrimarySkill: skill?.isPrimarySkill
+    }
   }
 
   return (
     <Formik
-      initialValues={snapshot}
+      initialValues={transformSnapshot(snapshot)}
       validationSchema={manageSkillsSchema}
-      onSubmit={handleSubmit}
+      onSubmit={saveSkill}
     >
       {(formik) => (
         <Form>
@@ -38,10 +55,14 @@ const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
             <Box p={3}>
               <Grid container spacing={3} alignItems={"center"}>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
-                  <InputField name={skill.name} label={skill.label} fullWidth />
+                  <SelectField
+                    name={skill.name}
+                    label={skill.label}
+                    data={SKILLS}
+                    fullWidth
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
-                  {/* <InputField name={proficiency.name} label={proficiency.label} /> */}
                   <SelectField
                     name={proficiency.name}
                     label={proficiency.label}
@@ -53,14 +74,14 @@ const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
                   <CheckboxField
                     name={isPrimarySkill.name}
                     label={isPrimarySkill.label}
-                    data={""}
+                    checked={formik.values.isPrimarySkill}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3} lg={3}>
                   <Button 
                     variant="contained"
                     color="primary"
-                    onClick={() => handleSubmit()}
+                    onClick={() => saveSkill()}
                   >
                     Save
                   </Button>

@@ -42,7 +42,7 @@ describe("SkillsForm", () => {
       {
         skill: 'test skill',
         proficiency: PROFICIENCY.HIGH,
-        primary: false
+        isPrimarySkill: false
       }
     ];
 
@@ -54,7 +54,7 @@ describe("SkillsForm", () => {
       {
         skill: '',
         proficiency: PROFICIENCY.HIGH,
-        primary: false
+        isPrimarySkill: false
       }
     ];
 
@@ -69,7 +69,7 @@ describe("SkillsForm", () => {
       {
         skill: 'test skill',
         proficiency: '',
-        primary: false
+        isPrimarySkill: false
       }
     ];
 
@@ -84,12 +84,12 @@ describe("SkillsForm", () => {
       {
         skill: 'test skill',
         proficiency: PROFICIENCY.HIGH,
-        primary: false
+        isPrimarySkill: false
       },
       {
         skill: 'test skill 2' ,
         proficiency: PROFICIENCY.MID,
-        primary: true
+        isPrimarySkill: true
       },
     ];
 
@@ -101,12 +101,12 @@ describe("SkillsForm", () => {
       {
         skill: 'test skill',
         proficiency: PROFICIENCY.MID,
-        primary: false
+        isPrimarySkill: false
       },
       {
         skill: '',
         proficiency: PROFICIENCY.HIGH,
-        primary: false
+        isPrimarySkill: false
       }
     ];
 

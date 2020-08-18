@@ -39,7 +39,7 @@ export const employee = {
       id: 2,
       skill: { id: 2, name: "", category: { name: "", id: 1 } },
       proficiency: PROFICIENCY.LOW,
-      primary: true,
+      isPrimarySkill: true,
     },
   ],
   id: 1,
@@ -63,11 +63,11 @@ function createEmployee(
       email,
     } as IEmployeeContact,
     skills: [
-      { skill: primarySkill, proficiency: PROFICIENCY.HIGH, primary: true },
+      { skill: primarySkill, proficiency: PROFICIENCY.HIGH, isPrimarySkill: true },
       ...otherSkills.map((s) => ({
         skill: s,
         proficiency: PROFICIENCY.MID,
-        primary: false,
+        isPrimarySkill: false,
       })),
     ] as IEmployeeSkill[],
   } as IEmployee);

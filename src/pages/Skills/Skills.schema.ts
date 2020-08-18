@@ -14,7 +14,7 @@ export const manageSkillsModel = {
     default: "",
   },
   isPrimarySkill: {
-    name: "primarySkill",
+    name: "isPrimarySkill",
     label: "Primary Skill",
     default: false,
   },

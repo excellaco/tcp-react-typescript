@@ -14,7 +14,7 @@ export const skillFormModel = {
     requiredErrorMsg: "Proficiency is required",
     default: ""
   },
-  primary: {
+  isPrimarySkill: {
     name: "primary",
     label: "Primary Skill",
     default: false,
@@ -25,7 +25,7 @@ export const skillsFormModel = [
     skillFormModel
   ]
 
-const { skill, proficiency, primary } = skillFormModel;
+const { skill, proficiency, isPrimarySkill } = skillFormModel;
 
 const skillFormSchema = Yup.object({
   skill: Yup.string()
@@ -34,7 +34,7 @@ const skillFormSchema = Yup.object({
   proficiency: Yup.string()
   .required(`${proficiency.requiredErrorMsg}`)
   .default(proficiency.default),
-  primary: Yup.boolean().default(primary.default),
+  isPrimarySkill: Yup.boolean().default(isPrimarySkill.default),
 }).required()
 
 export const skillsFormSchema = Yup.array().of(skillFormSchema).required()

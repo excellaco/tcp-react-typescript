@@ -34,7 +34,7 @@ export const ChipList: React.FC<{skills: IEmployeeSkill[]}> = ({skills}) => {
           <li key={s.skill.name}>
             <Chip
               label={s.skill.name}
-              className={s.primary ? classes.primarySkill : ''}
+              className={s.isPrimarySkill ? classes.primarySkill : ''}
             />
           </li>
         );

@@ -51,8 +51,8 @@ export const ContactForm: React.FC<{
                     </Grid>
                     <Grid item xs={3} sm={3}>
                       <CheckboxField
-                        label={skill.primary.label}
-                        name={withFormGroup(`${index}.${skill.primary.name}`)}
+                        label={skill.isPrimarySkill.label}
+                        name={withFormGroup(`${index}.${skill.isPrimarySkill.name}`)}
                       />
                     </Grid>
                     <Grid item xs={1} sm={1}>

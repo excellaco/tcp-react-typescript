@@ -4,7 +4,7 @@ import { IBaseItem } from './BaseItem.interface'
 export interface IEmployeeSkill extends IBaseItem {
   skill: ISkill
   proficiency: PROFICIENCY
-  primary: boolean
+  isPrimarySkill: boolean
 }
 
 export interface ISkill extends IBaseItem {
