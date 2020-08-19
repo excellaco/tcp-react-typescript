@@ -22,9 +22,9 @@ export const skills = [scrumMasterSkill, reactSkill, javaSkill];
 
 // Temp, meant to be removed when SelectField supports non-enum data.
 export enum SKILLS {
-  SCRUM = 'SCRUM',
-  REACT = 'REACT',
-  JAVA = 'JAVA',
+  SCRUM = 'Scrum Master',
+  REACT = 'React',
+  JAVA = 'Java',
 }
 
 export default skills;

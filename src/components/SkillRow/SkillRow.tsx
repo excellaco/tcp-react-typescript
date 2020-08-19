@@ -37,7 +37,7 @@ const SkillRow: React.FC<{skillData?: IEmployeeSkill}> = ({skillData}) => {
 
   function transformSnapshot(skill?: IEmployeeSkill) {
     return {
-      skill: skill?.skill?.name.toUpperCase().replace(' ', '_'),
+      skill: skill?.skill?.name.toUpperCase(),
       proficiency: skill?.proficiency,
       isPrimarySkill: skill?.isPrimarySkill
     }
