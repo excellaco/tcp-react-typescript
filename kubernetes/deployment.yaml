@@ -13,25 +13,12 @@ spec:
         app: tcp-react-typescript
     spec:
       containers:
-      - image: 775216406089.dkr.ecr.us-east-1.amazonaws.com/va-cedar-repository:testing
+      - image: {{IMAGE_ID}}
         imagePullPolicy: Always
         name: tcp-react-typescript
         tty: true
         ports:
         - containerPort: 3000
-        livenessProbe:
-          httpGet:
-            path: /login
-            port: 3000
-          initialDelaySeconds: 120
-          failureThreshold: 1
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /login
-            port: 3000
-          initialDelaySeconds: 120
-          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
@@ -62,4 +49,5 @@ spec:
       - backend:
           serviceName: tcp-react-typescript
           servicePort: 80
-        path: 
+        path:
+    host: tcp-react-typescript.external-dns-test.excella-va-cedar.com
