@@ -3,8 +3,8 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      maxWidth: "290px",
-      height: "90px",
+      maxWidth: "290px", // Change me?
+      maxHeight: "90px", // Change me?
     },
     cardContent: {
       height: "100%",
