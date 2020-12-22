@@ -24,7 +24,7 @@ export const Routes = () => {
           <Redirect to={status === "authenticated" ? "/home" : "/login"} />
         )}
       />
-      <UserRoute exact path="/home" component={HomePage} />
+      <Route exact path="/home" component={HomePage} />
       <Route exact path="/login" component={LoginComponent} />
 
       <AdminRoute
