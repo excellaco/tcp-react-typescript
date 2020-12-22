@@ -50,7 +50,7 @@ spec:
         }
       steps {
         withSonarQubeEnv('Sonarqube') {
-          sh "export SONAR_HOST_URL=${SONAR_HOST_URL} && export SONAR_LOGIN=${SONAR_AUTH_TOKEN} /usr/bin/entrypoint.sh"
+          sh "export SONAR_HOST_URL=${SONAR_HOST_URL} && export SONAR_LOGIN=${SONAR_LOGIN} /usr/bin/entrypoint.sh"
         }
       }
     }
