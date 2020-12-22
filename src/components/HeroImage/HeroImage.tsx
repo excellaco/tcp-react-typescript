@@ -10,9 +10,9 @@ export interface HeroImageProps {
 
 const HeroImage = (props: HeroImageProps) => {
   return (
-    <div className={styles.heroImageContainer}>
-      <img src={props.imageSrc} className={styles.heroImageImage} alt={props.headerText} data-testId="hero-image" aria-label="hero-image"></img>
-      <div className={styles.heroImageContent}>
+    <div className={`${styles.heroImageContainer} vads-l-row`}>
+      <img src={props.imageSrc} className={`${styles.heroImageImage} vads-l-col--12 medium-screen:vads-l-col--4`} alt={props.headerText} data-testId="hero-image" aria-label="hero-image"></img>
+      <div className={`${styles.heroImageContent} vads-l-col--12 medium-screen:vads-l-col--8`}>
         <h2>{props.headerText}</h2>
         <Link to="buttonLink">
           <button aria-label="hero-button" data-testid>
