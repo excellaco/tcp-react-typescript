@@ -38,7 +38,7 @@ kind: Ingress
 metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: va-cedar-frontend.external-dns-test.excella-va-cedar.com
+    external-dns.alpha.kubernetes.io/hostname: va-cedar-frontend.excella-va-cedar.com
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:775216406089:certificate/f280d16a-7ffe-4ed5-8acd-8fd7632e6a07
     kubernetes.io/ingress.class: alb
   name: va-cedar-frontend
