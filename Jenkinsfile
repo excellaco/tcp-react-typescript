@@ -44,6 +44,8 @@ spec:
           image: sonarsource/sonar-scanner-cli
           imagePullPolicy: IfNotPresent
           tty: true
+          command:
+            - cat
           env:
             - name: SONAR_HOST_URL
               value: ${SONAR_HOST_URL}
@@ -54,7 +56,7 @@ spec:
         }
       }
       steps {
-          
+        sh '/usr/bin/entrypoint.sh'
       }
     }
     stage('Build Image & Push to ECR') {
