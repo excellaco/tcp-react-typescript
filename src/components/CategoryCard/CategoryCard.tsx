@@ -4,13 +4,13 @@ import React from "react";
 import { useStyles } from "./CategoryCard.styles";
 
 type CategoryCardProps = {
-  backgroundImagePath?: string;
+  image: string;
   category: string;
   handleClick?: () => void;
 };
 
 const CategoryCard: React.FC<CategoryCardProps> = ({
-  backgroundImagePath,
+  image,
   category,
   handleClick,
 }) => {
@@ -20,7 +20,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
       <CardActionArea className={classes.cardContent}>
         <CardMedia
           className={classes.media}
-          image={backgroundImagePath}
+          image={image}
           title={`${category} Image`}
         >
           <div className={classes.text}>{category}</div>
