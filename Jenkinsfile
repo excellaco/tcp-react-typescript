@@ -30,7 +30,6 @@ spec:
       }
     }
     stage('SonarQube Scan') {
-      withSonarQubeEnv() {
         agent {
           kubernetes {
             defaultContainer "sonar-scanner"
@@ -46,17 +45,13 @@ spec:
           tty: true
           command:
             - cat
-          env:
-            - name: SONAR_HOST_URL
-              value: ${SONAR_HOST_URL}
-            - name: SONAR_LOGIN
-              value: ${SONAR_AUTH_TOKEN}
   """
           }
         }
-      }
       steps {
-        sh '/usr/bin/entrypoint.sh'
+        withSonarQubeEnv() {
+          sh "export SONAR_HOST_URL=${SONAR_HOST_URL} && export SONAR_LOGIN=${SONAR_AUTH_TOKEN} /usr/bin/entrypoint.sh"
+        }
       }
     }
     stage('Build Image & Push to ECR') {
