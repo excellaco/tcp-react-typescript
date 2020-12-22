@@ -29,7 +29,7 @@ spec:
         sh 'npm run test:ci'
       }
     }
-    stage {
+    stage('SonarQube Scan') {
       withSonarQubeEnv() {
         agent {
           kubernetes {
