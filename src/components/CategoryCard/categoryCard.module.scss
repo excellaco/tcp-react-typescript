@@ -1,0 +1,20 @@
+@import "~@department-of-veterans-affairs/formation/sass/base/_b-variables";
+
+.root {
+  max-width: 290px; // Change me?
+  height: 90px; // Change me?
+  position: relative;
+}
+
+.media {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.text {
+  position: absolute;
+  top: 4px;
+  color: $color-white;
+  padding-left: 5%;
+  font-size: 24px;
+}
