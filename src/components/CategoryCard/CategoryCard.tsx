@@ -18,7 +18,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
         className={classes.media}
         src={image}
         title={`${category} Image`}
-      ></img>
+      />
       <p className={classes.text}>{category}</p>
     </div>
   );
