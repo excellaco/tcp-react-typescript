@@ -52,9 +52,9 @@ spec:
   """
           }
         }
-        steps {
+      }
+      steps {
           
-        }
       }
     }
     stage('Build Image & Push to ECR') {
