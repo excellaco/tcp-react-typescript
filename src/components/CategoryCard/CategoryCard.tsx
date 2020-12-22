@@ -1,7 +1,5 @@
-import { CardActionArea, CardMedia } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
 import React from "react";
-import { useStyles } from "./CategoryCard.styles";
+import * as classes from "./categoryCard.module.scss";
 
 type CategoryCardProps = {
   image: string;
@@ -14,19 +12,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   category,
   handleClick,
 }) => {
-  const classes = useStyles();
   return (
-    <Card className={classes.root} onClick={handleClick}>
-      <CardActionArea className={classes.cardContent}>
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title={`${category} Image`}
-        >
-          <div className={classes.text}>{category}</div>
-        </CardMedia>
-      </CardActionArea>
-    </Card>
+    <div className={classes.root} onClick={handleClick}>
+      <img
+        className={classes.media}
+        src={image}
+        title={`${category} Image`}
+      ></img>
+      <p className={classes.text}>{category}</p>
+    </div>
   );
 };
 
