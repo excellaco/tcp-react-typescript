@@ -4,7 +4,7 @@ export const useStyles = makeStyles(() =>
   createStyles({
     root: {
       maxWidth: "290px", // Change me?
-      maxHeight: "90px", // Change me?
+      height: "90px", // Change me?
     },
     cardContent: {
       height: "100%",
