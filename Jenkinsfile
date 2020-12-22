@@ -29,6 +29,31 @@ spec:
         sh 'npm run test:ci'
       }
     }
+    stage {
+      withSonarQubeEnv() {
+        agent {
+          kubernetes {
+            defaultContainer "sonar-scanner"
+            yaml """
+    kind: Pod
+    metadata:
+      name: sonar-scanner
+    spec:
+      containers:
+        - name: sonar-scanner
+          image: sonarsource/sonar-scanner-cli
+          imagePullPolicy: IfNotPresent
+          tty: true
+          env:
+            - name: SONAR_HOST_URL
+              value: ${SONAR_HOST_URL}
+            - name: SONAR_LOGIN
+              value: ${SONAR_AUTH_TOKEN}
+  """
+          }
+        }
+      }
+    }
     stage('Build Image & Push to ECR') {
       agent {
         kubernetes {
